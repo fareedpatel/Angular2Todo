@@ -65,4 +65,17 @@ describe('TodoDataService', () => {
       }));
    });
 
+   describe('#updateTodoById(id, values)',() => {
+     it('should return todo with the corresponding id and updated data',
+     inject([TodoDataService], (service: TodoDataService) => {
+       let todo = new Todo({title: 'Hello 1', complete: false});
+       service.addTodo(todo);
+       let updatedTodo = service.updateTodoById(1, {
+         title: 'new title'
+       });
+       expect(updatedTodo.title).toEqual('new title');
+     }));
+
+   });
+
 });
